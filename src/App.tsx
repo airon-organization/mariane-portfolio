@@ -2,11 +2,12 @@ import styled from "@emotion/styled";
 import MenuBar from "./components/menu-bar";
 import Home from "./components/home";
 import About from "./components/about";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Contact from "./components/contact";
 import Blog from "./components/blog";
 import Services from "./components/services";
 import Portfolio from "./components/portfolio";
+import useIntersectionObserver from "./hooks/intersection-observer";
 
 const Root = styled.div`
   display: flex;
@@ -36,39 +37,12 @@ export default function App() {
 
   const [currentSection, setCurrentSection] = useState<string>("home");
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setCurrentSection(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-      }
-    );
-
-    if (homeRef.current) {
-      observer.observe(homeRef.current);
-    }
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
-    }
-    if (contactRef.current) {
-      observer.observe(contactRef.current);
-    }
-    if (blogRef.current) {
-      observer.observe(blogRef.current);
-    }
-    if (servicesRef.current) {
-      observer.observe(servicesRef.current);
-    }
-    if (portfolioRef.current) {
-      observer.observe(portfolioRef.current);
-    }
-  }, []);
+  useIntersectionObserver(homeRef, () => setCurrentSection("home"));
+  useIntersectionObserver(aboutRef, () => setCurrentSection("about"));
+  useIntersectionObserver(contactRef, () => setCurrentSection("contact"));
+  useIntersectionObserver(blogRef, () => setCurrentSection("blog"));
+  useIntersectionObserver(servicesRef, () => setCurrentSection("services"));
+  useIntersectionObserver(portfolioRef, () => setCurrentSection("portfolio"));
 
   const handleOnClick = useCallback(
     (id: string) => {
