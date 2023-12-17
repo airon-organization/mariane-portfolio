@@ -52,42 +52,42 @@ export default function MenuBar({ onClick, current }: Proptypes) {
 
         <Container flex={2}>
           <Item onClick={() => onClick?.("home")} active={current === "home"}>
-            <Typography variant="h4" fontWeight={700}>
-              Home
+            <Typography variant="h5" fontWeight={700}>
+              INÍCIO
             </Typography>
           </Item>
           <Item onClick={() => onClick?.("about")} active={current === "about"}>
-            <Typography variant="h4" fontWeight={700}>
-              Sobre
+            <Typography variant="h5" fontWeight={700}>
+              SOBRE
             </Typography>
           </Item>
           <Item
             onClick={() => onClick?.("services")}
             active={current === "services"}
           >
-            <Typography variant="h4" fontWeight={700}>
-              Serviços
+            <Typography variant="h5" fontWeight={700}>
+              SERVIÇOS
             </Typography>
           </Item>
           <Item
             onClick={() => onClick?.("portfolio")}
             active={current === "portfolio"}
           >
-            <Typography variant="h4" fontWeight={700}>
-              Portfólio
+            <Typography variant="h5" fontWeight={700}>
+              PORTFÓLIO
             </Typography>
           </Item>
           <Item onClick={() => onClick?.("blog")} active={current === "blog"}>
-            <Typography variant="h4" fontWeight={700}>
-              Blog
+            <Typography variant="h5" fontWeight={700}>
+              ARTIGOS
             </Typography>
           </Item>
           <Item
             onClick={() => onClick?.("contact")}
             active={current === "contact"}
           >
-            <Typography variant="h4" fontWeight={700}>
-              Contato
+            <Typography variant="h5" fontWeight={700}>
+              CONTATO
             </Typography>
           </Item>
         </Container>
