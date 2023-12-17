@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Typography } from "@mui/material";
+import image from "../images/home-image.jpeg";
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,9 +17,10 @@ const ImageCard = styled.div`
   height: 100%;
   border: 10px solid #000;
   position: relative;
+  padding: 20px;
 `;
 const PaddingCard = styled.div`
-  padding: 70px;
+  padding: 120px 70px;
   width: 100%;
   height: 100%;
 `;
@@ -45,6 +47,12 @@ export default function Home() {
       <Container>
         <PaddingCard>
           <ImageCard>
+            <img
+              src={image}
+              alt="home"
+              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              loading="lazy"
+            />
             <BackgroundCard></BackgroundCard>
           </ImageCard>
         </PaddingCard>
