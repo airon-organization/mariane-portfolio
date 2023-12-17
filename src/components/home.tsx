@@ -59,6 +59,9 @@ export default function Home() {
             Mussum Ipsum, cacilds vidis litro abertis. Bota 1 metro de cachacis
             aí pra viagem!
           </Typography>
+          <Typography variant="h3" fontFamily={"Fasthand"} marginTop={"30px"}>
+            Mariane Alves Vidal
+          </Typography>
         </PaddingCard>
       </Container>
     </Wrapper>

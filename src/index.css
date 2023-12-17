@@ -22,3 +22,9 @@ body {
   overflow-x: hidden;
 }
 
+@font-face {
+  font-family: "Fasthand";
+  src: local("Fasthand-Regular"),
+    url("./fonts/Fasthand-Regular.ttf") format("truetype");
+  font-weight: bold;
+}
