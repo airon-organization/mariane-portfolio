@@ -18,12 +18,17 @@ const ImageCard = styled.div`
   border: 10px solid #000;
   position: relative;
   padding: 20px;
+  min-width: 250px;
 `;
 const PaddingCard = styled.div<{ open?: boolean }>`
   padding: ${({ open }) => (open ? "110px 70px;" : "50px 100px")};
   width: 100%;
   height: 100%;
   transition: all 0.5s ease-in-out;
+
+  @media (max-width: 1115px) {
+    padding: ${({ open }) => (open ? "100px 5px;" : "50px 80px")};
+  }
 `;
 const BackgroundCard = styled.div`
   width: 130%;

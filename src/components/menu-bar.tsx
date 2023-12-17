@@ -2,12 +2,13 @@ import styled from "@emotion/styled";
 import { IconButton, Typography } from "@mui/material";
 import ArrowBackSharpIcon from "@mui/icons-material/ArrowBackSharp";
 import ArrowForwardSharpIcon from "@mui/icons-material/ArrowForwardSharp";
-import { useState } from "react";
 
 const Fixed = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  background-color: white;
+  z-index: 2;
 `;
 
 const Relative = styled.div`
