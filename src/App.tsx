@@ -15,10 +15,11 @@ const Root = styled.div`
   min-height: 100vh;
 `;
 
-const MenuContainer = styled.div`
-  width: 420px;
+const MenuContainer = styled.div<{ menuOpen: boolean }>`
+  width: ${({ menuOpen }) => (menuOpen ? "420px" : "0px")};
   position: relative;
   overflow: hidden;
+  transition: all 0.5s ease-in-out;
 `;
 
 const Main = styled.div`
@@ -36,6 +37,8 @@ export default function App() {
   const portfolioRef = useRef<HTMLDivElement>(null);
 
   const [currentSection, setCurrentSection] = useState<string>("home");
+
+  const [menuOpen, setMenuOpen] = useState<boolean>(true);
 
   useIntersectionObserver(homeRef, () => setCurrentSection("home"));
   useIntersectionObserver(aboutRef, () => setCurrentSection("about"));
@@ -73,12 +76,17 @@ export default function App() {
   );
   return (
     <Root>
-      <MenuContainer>
-        <MenuBar onClick={handleOnClick} current={currentSection} />
+      <MenuContainer menuOpen={menuOpen}>
+        <MenuBar
+          open={menuOpen}
+          onClick={handleOnClick}
+          current={currentSection}
+          setMenuOpen={() => setMenuOpen(!menuOpen)}
+        />
       </MenuContainer>
       <Main>
         <div ref={homeRef} id="home">
-          <Home />
+          <Home isMenuOpen={menuOpen} />
         </div>
         <div ref={aboutRef} id="about">
           <About />

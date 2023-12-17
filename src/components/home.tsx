@@ -19,18 +19,19 @@ const ImageCard = styled.div`
   position: relative;
   padding: 20px;
 `;
-const PaddingCard = styled.div`
-  padding: 120px 70px;
+const PaddingCard = styled.div<{ open?: boolean }>`
+  padding: ${({ open }) => (open ? "110px 70px;" : "50px 100px")};
   width: 100%;
   height: 100%;
+  transition: all 0.5s ease-in-out;
 `;
 const BackgroundCard = styled.div`
-  width: 140%;
+  width: 130%;
   height: 80%;
-  background-color: #e397b1;
+  background-color: #ffea00;
   position: absolute;
   top: 50px;
-  left: -20%;
+  left: -12%;
   z-index: -1;
 `;
 
@@ -41,16 +42,21 @@ const Line = styled.div`
   margin: 30px 0;
 `;
 
-export default function Home() {
+export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
     <Wrapper>
       <Container>
-        <PaddingCard>
+        <PaddingCard open={isMenuOpen}>
           <ImageCard>
             <img
               src={image}
               alt="home"
-              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                transition: "all 0.5s ease-in-out",
+              }}
               loading="lazy"
             />
             <BackgroundCard></BackgroundCard>
@@ -64,11 +70,11 @@ export default function Home() {
           </Typography>
           <Line />
           <Typography variant="h5" textAlign={"left"}>
-            Mussum Ipsum, cacilds vidis litro abertis. Bota 1 metro de cachacis
-            aí pra viagem!
+            Experiência com eficiência energética, geração de energia
+            fotovoltaica e qualidade dos materiais
           </Typography>
           <Typography variant="h3" fontFamily={"Fasthand"} marginTop={"30px"}>
-            Mariane Alves Vidal
+            Mariane Vidal
           </Typography>
         </PaddingCard>
       </Container>
