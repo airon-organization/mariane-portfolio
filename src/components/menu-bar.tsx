@@ -22,22 +22,24 @@ const Container = styled.div<{ flex?: number }>`
   flex-direction: column;
 `;
 
-const Item = styled.div`
+const Item = styled.div<{ active?: boolean }>`
   min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: ${({ active }) => (active ? "#e397b1 !important" : "#fff")};
 
   &:hover {
-    background-color: #e397b1;
+    background-color: #f7d9e6;
     cursor: pointer;
   }
 `;
 
 interface Proptypes {
   onClick?: (id: string) => void;
+  current?: string;
 }
-export default function MenuBar({ onClick }: Proptypes) {
+export default function MenuBar({ onClick, current }: Proptypes) {
   return (
     <Fixed>
       <Wrapper>
@@ -49,32 +51,41 @@ export default function MenuBar({ onClick }: Proptypes) {
         </Container>
 
         <Container flex={2}>
-          <Item onClick={() => onClick?.("home")}>
+          <Item onClick={() => onClick?.("home")} active={current === "home"}>
             <Typography variant="h4" fontWeight={700}>
               Home
             </Typography>
           </Item>
-          <Item onClick={() => onClick?.("about")}>
+          <Item onClick={() => onClick?.("about")} active={current === "about"}>
             <Typography variant="h4" fontWeight={700}>
               Sobre
             </Typography>
           </Item>
-          <Item>
+          <Item
+            onClick={() => onClick?.("services")}
+            active={current === "services"}
+          >
             <Typography variant="h4" fontWeight={700}>
               Serviços
             </Typography>
           </Item>
-          <Item>
+          <Item
+            onClick={() => onClick?.("portfolio")}
+            active={current === "portfolio"}
+          >
             <Typography variant="h4" fontWeight={700}>
               Portfólio
             </Typography>
           </Item>
-          <Item>
+          <Item onClick={() => onClick?.("blog")} active={current === "blog"}>
             <Typography variant="h4" fontWeight={700}>
               Blog
             </Typography>
           </Item>
-          <Item>
+          <Item
+            onClick={() => onClick?.("contact")}
+            active={current === "contact"}
+          >
             <Typography variant="h4" fontWeight={700}>
               Contato
             </Typography>
