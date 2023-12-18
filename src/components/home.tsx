@@ -2,10 +2,18 @@ import styled from "@emotion/styled";
 import { Typography } from "@mui/material";
 import image from "../images/home-image.jpeg";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ open?: boolean }>`
   display: flex;
   flex: 1;
-  height: 100vh;
+  min-height: 100vh;
+
+  @media (max-width: 1270px) {
+    flex-direction: ${({ open }) => (open ? "column" : "row")};
+  }
+
+  @media (max-width: 840px) {
+    flex-direction: column;
+  }
 `;
 
 const Container = styled.div`
@@ -26,8 +34,12 @@ const PaddingCard = styled.div<{ open?: boolean }>`
   height: 100%;
   transition: all 0.5s ease-in-out;
 
-  @media (max-width: 1115px) {
-    padding: ${({ open }) => (open ? "100px 5px;" : "50px 80px")};
+  @media (max-width: 1270px) {
+    padding: ${({ open }) => (open ? "100px 120px;" : "50px 80px")};
+  }
+
+  @media (max-width: 840px) {
+    padding: ${({ open }) => (open ? "100px 70px;" : "50px 120px")};
   }
 `;
 const BackgroundCard = styled.div`
@@ -49,7 +61,7 @@ const Line = styled.div`
 
 export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
-    <Wrapper>
+    <Wrapper open={isMenuOpen}>
       <Container>
         <PaddingCard open={isMenuOpen}>
           <ImageCard>
@@ -61,6 +73,7 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
                 height: "100%",
                 objectFit: "contain",
                 transition: "all 0.5s ease-in-out",
+                maxHeight: "400px",
               }}
               loading="lazy"
             />
