@@ -4,7 +4,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  min-height: 200vh;
+  min-height: 100vh;
 `;
 export default function Blog() {
   return <Wrapper>Blog</Wrapper>;
