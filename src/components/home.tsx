@@ -6,6 +6,7 @@ const Wrapper = styled.div<{ open?: boolean }>`
   display: flex;
   flex: 1;
   min-height: 100vh;
+  align-items: center;
 
   @media (max-width: 1270px) {
     flex-direction: ${({ open }) => (open ? "column" : "row")};
@@ -29,7 +30,7 @@ const ImageCard = styled.div`
   min-width: 250px;
 `;
 const PaddingCard = styled.div<{ open?: boolean }>`
-  padding: ${({ open }) => (open ? "110px 70px;" : "50px 100px")};
+  padding: ${({ open }) => (open ? "110px 70px;" : "50px 120px")};
   width: 100%;
   height: 100%;
   transition: all 0.5s ease-in-out;
@@ -39,7 +40,11 @@ const PaddingCard = styled.div<{ open?: boolean }>`
   }
 
   @media (max-width: 840px) {
-    padding: ${({ open }) => (open ? "100px 70px;" : "50px 120px")};
+    padding: 50px 120px;
+  }
+
+  @media (max-width: 530px) {
+    padding: 50px 60px;
   }
 `;
 const BackgroundCard = styled.div`
@@ -91,7 +96,12 @@ export default function Home({ isMenuOpen }: { isMenuOpen: boolean }) {
             Experiência com eficiência energética, geração de energia
             fotovoltaica e qualidade dos materiais
           </Typography>
-          <Typography variant="h3" fontFamily={"Fasthand"} marginTop={"30px"}>
+          <Typography
+            variant="h3"
+            textAlign={"center"}
+            fontFamily={"Fasthand"}
+            marginTop={"30px"}
+          >
             Mariane Vidal
           </Typography>
         </PaddingCard>
