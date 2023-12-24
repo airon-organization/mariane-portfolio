@@ -1,12 +1,12 @@
 import emailjs from "emailjs-com";
-require("dotenv").config();
-export default function sendEmail(e: any) {
-  e.preventDefault();
+import { RefObject } from "react";
 
-  emailjs.sendForm(
+export default function sendEmail(form: RefObject<HTMLFormElement>) {
+  if (!form.current) return;
+  return emailjs.sendForm(
     process.env.REACT_APP_SERVICE_ID || "",
     process.env.REACT_APP_TEMPLATE_ID || "",
-    e.target,
+    form.current,
     process.env.REACT_APP_PUBLIC_KEY || ""
   );
 }

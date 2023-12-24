@@ -95,22 +95,7 @@ export default function MenuBar({
                 SOBRE
               </Typography>
             </Item>
-            <Item
-              onClick={() => onClick?.("services")}
-              active={current === "services"}
-            >
-              <Typography variant="h5" fontWeight={700}>
-                SERVIÇOS
-              </Typography>
-            </Item>
-            <Item
-              onClick={() => onClick?.("portfolio")}
-              active={current === "portfolio"}
-            >
-              <Typography variant="h5" fontWeight={700}>
-                PORTFÓLIO
-              </Typography>
-            </Item>
+
             <Item onClick={() => onClick?.("blog")} active={current === "blog"}>
               <Typography variant="h5" fontWeight={700}>
                 ARTIGOS

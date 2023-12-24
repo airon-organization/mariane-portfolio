@@ -5,8 +5,7 @@ import About from "./components/about";
 import { useCallback, useRef, useState } from "react";
 import Contact from "./components/contact";
 import Blog from "./components/blog";
-import Services from "./components/services";
-import Portfolio from "./components/portfolio";
+
 import useIntersectionObserver from "./hooks/intersection-observer";
 
 const Root = styled.div`
@@ -40,8 +39,6 @@ export default function App() {
   const aboutRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
   const blogRef = useRef<HTMLDivElement>(null);
-  const servicesRef = useRef<HTMLDivElement>(null);
-  const portfolioRef = useRef<HTMLDivElement>(null);
 
   const [currentSection, setCurrentSection] = useState<string>("home");
 
@@ -51,8 +48,6 @@ export default function App() {
   useIntersectionObserver(aboutRef, () => setCurrentSection("about"));
   useIntersectionObserver(contactRef, () => setCurrentSection("contact"));
   useIntersectionObserver(blogRef, () => setCurrentSection("blog"));
-  useIntersectionObserver(servicesRef, () => setCurrentSection("services"));
-  useIntersectionObserver(portfolioRef, () => setCurrentSection("portfolio"));
 
   const handleOnClick = useCallback(
     (id: string) => {
@@ -69,12 +64,7 @@ export default function App() {
         case "blog":
           blogRef.current?.scrollIntoView({ behavior: "smooth" });
           break;
-        case "services":
-          servicesRef.current?.scrollIntoView({ behavior: "smooth" });
-          break;
-        case "portfolio":
-          portfolioRef.current?.scrollIntoView({ behavior: "smooth" });
-          break;
+
         default:
           break;
       }
@@ -98,14 +88,6 @@ export default function App() {
         <Line />
         <div ref={aboutRef} id="about">
           <About />
-        </div>
-        <Line />
-        <div ref={servicesRef} id="services">
-          <Services />
-        </div>
-        <Line />
-        <div ref={portfolioRef} id="portfolio">
-          <Portfolio />
         </div>
         <Line />
         <div ref={blogRef} id="blog">
