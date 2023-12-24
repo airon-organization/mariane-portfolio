@@ -26,8 +26,15 @@ const Main = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
+const Line = styled.div`
+  width: 80%;
+  height: 5px;
+  background-color: #000;
+  margin: 30px 0;
+`;
 export default function App() {
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -88,18 +95,23 @@ export default function App() {
         <div ref={homeRef} id="home">
           <Home isMenuOpen={menuOpen} />
         </div>
+        <Line />
         <div ref={aboutRef} id="about">
           <About />
         </div>
+        <Line />
         <div ref={servicesRef} id="services">
           <Services />
         </div>
+        <Line />
         <div ref={portfolioRef} id="portfolio">
           <Portfolio />
         </div>
+        <Line />
         <div ref={blogRef} id="blog">
           <Blog />
         </div>
+        <Line />
         <div ref={contactRef} id="contact">
           <Contact />
         </div>
