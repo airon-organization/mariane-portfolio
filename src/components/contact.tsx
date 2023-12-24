@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import sendEmail from "../helpers/send-email";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Wrapper = styled.div`
   display: flex;
@@ -40,13 +41,26 @@ export default function Contact() {
     message: string;
   }>({ name: "", address: "", subject: "", message: "" });
   const form = useRef<HTMLFormElement>(null);
-  const onSubmit = useCallback(async (e: any) => {
-    e.preventDefault();
-
-    sendEmail(form)?.then((res) => {
-      console.log(res);
-    });
-  }, []);
+  const [loading, setLoading] = useState<boolean>(false);
+  const onSubmit = useCallback(
+    async (e: any) => {
+      e.preventDefault();
+      if (email.message.length < 3) {
+        alert("Mensagem muito curta!");
+        return;
+      }
+      setLoading(true);
+      try {
+        await sendEmail(form);
+        alert("Email enviado com sucesso!");
+        setEmail({ name: "", address: "", subject: "", message: "" });
+      } catch (e) {
+        alert("Erro ao enviar email!");
+      }
+      setLoading(false);
+    },
+    [email]
+  );
   return (
     <Wrapper>
       <Typography variant="h2" textAlign={"center"} marginTop={10}>
@@ -60,6 +74,7 @@ export default function Contact() {
           <Input
             type="text"
             id="name"
+            inputProps={{ minLength: 3 }}
             aria-describedby="my-helper-text"
             onChange={(e) => setEmail({ ...email, name: e.target.value ?? "" })}
             value={email?.name}
@@ -100,7 +115,7 @@ export default function Contact() {
           />
         </FormControl>
 
-        <FormControl sx={{ width: "100%" }}>
+        <FormControl sx={{ width: "100%" }} required>
           <TextareaAutosize
             id="message"
             aria-describedby="my-helper-text"
@@ -114,10 +129,9 @@ export default function Contact() {
           />
         </FormControl>
 
-        <Input type="hidden" name="replyTo" value={email.address} />
-
         <Button variant="contained" type="submit">
-          Enviar
+          {loading && <CircularProgress />}
+          {loading ? "Enviando..." : "Enviar"}
         </Button>
       </Form>
     </Wrapper>
