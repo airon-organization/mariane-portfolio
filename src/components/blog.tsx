@@ -24,12 +24,20 @@ const Flex = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
+
+const Line = styled.div`
+  width: 200px;
+  height: 5px;
+  background-color: #000;
+  margin: 30px auto;
+`;
 export default function Blog() {
   return (
     <Wrapper>
       <Typography variant="h2" textAlign={"center"} marginTop={10}>
         Artigos
       </Typography>
+      <Line />
       <Flex>
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
