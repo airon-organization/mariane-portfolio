@@ -1,4 +1,3 @@
-import emailjs from "emailjs-com";
 import { RefObject } from "react";
 
 export default function sendEmail(form: RefObject<HTMLFormElement>) {
